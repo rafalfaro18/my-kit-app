@@ -9,6 +9,13 @@ version = "2023.0.0"
 [settings]
 app.window.title = "My Company App"
 
+# Public extension registries
+[settings.exts."omni.kit.registry.nucleus"]
+registries = [
+    { name = "kit/default", url = "https://ovextensionsprod.blob.core.windows.net/exts/kit/prod/shared" },
+    { name = "kit/sdk", url = "https://ovextensionsprod.blob.core.windows.net/exts/kit/prod/sdk/${kit_version_short}/${kit_git_hash}" },
+]
+
 [[test]]
 args = [
     "--/app/window/title=My Test App",
