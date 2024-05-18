@@ -44,7 +44,7 @@ class CreateSetupExtension(omni.ext.IExt):
     async def __new_stage(self):
 
             # 10 frame delay to allow Layout
-            for i in range(5):
+            for i in range(10):
                 await omni.kit.app.get_app().next_update_async()
 
             if omni.usd.get_context().can_open_stage():
