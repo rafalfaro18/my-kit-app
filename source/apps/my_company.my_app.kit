@@ -5,11 +5,22 @@ version = "2023.0.0"
 
 [dependencies]
 "omni.app.editor.base" = {}
+# Vulkan shader caches
+"omni.rtx.shadercache.vulkan" = {}
+# DX shader caches (windows only)
+[dependencies."filter:platform"."windows-x86_64"]
+"omni.rtx.shadercache.d3d12" = {}
+
+[settings.app]
+fastShutdown = true
 
 [settings]
 app.window.title = "My Company App"
 app.extensions.installUntrustedExtensions = true
 "persistent"."exts"."omni.kit.welcome.window"."visible_at_startup" = false
+"persistent"."renderer"."startupMessageDisplayed" = false
+"persistent"."app"."newStage"."defaultTemplate" = "MyDefault"
+"persistent"."app"."newStage"."templatePath" =  ["${app_documents}/scripts/new_stage"]
 
 # Extension Registries
 [settings.exts."omni.kit.registry.nucleus"]
