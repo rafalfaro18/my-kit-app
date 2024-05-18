@@ -1,0 +1,31 @@
+import asyncio
+import omni.ext
+import carb.settings
+import omni.kit.app
+import omni.kit.stage_templates as stage_templates
+
+class CreateSetupExtension(omni.ext.IExt):
+    """Create Final Configuration"""
+    def on_startup(self, ext_id):
+        """setup the window layout, menu, final configuration of the extensions etc"""
+        print("[my_company.my_app.setup] MyExtension startup")
+        self._settings = carb.settings.get_settings()
+
+        # Setting to hack few things in test run. Ideally we shouldn't need it.
+        test_mode = self._settings.get("/app/testMode")
+
+        if not test_mode and not self._settings.get("/app/content/emptyStageOnStart"):
+            self.__await_new_scene = asyncio.ensure_future(self.__new_stage())
+
+
+    async def __new_stage(self):
+
+            # 10 frame delay to allow Layout
+            for i in range(5):
+                await omni.kit.app.get_app().next_update_async()
+
+            if omni.usd.get_context().can_open_stage():
+                stage_templates.new_stage(template="test")
+
+    def on_shutdown(self):
+        print("[my_company.my_app.setup] MyExtension shutdown")

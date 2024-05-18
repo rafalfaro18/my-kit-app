@@ -3,8 +3,13 @@ title = "My App"
 description = "An Application created from a tutorial."
 version = "2023.0.0"
 
+# Register extension folder from this repo in kit
+[settings.app.exts]
+folders.'++' = ["${app}/../exts", "${app}/../extscache"]
+
 [dependencies]
 "omni.app.editor.base" = {}
+"my_company.my_app.setup" = {}
 # Vulkan shader caches
 "omni.rtx.shadercache.vulkan" = {}
 # DX shader caches (windows only)
@@ -13,13 +18,17 @@ version = "2023.0.0"
 
 [settings.app]
 fastShutdown = true
+newStage.defaultTemplate = "test"
+newStage.templatePath =  ["${app_documents}/scripts/new_stage"]
 
 [settings]
+persistent = true
 app.window.title = "My Company App"
 app.extensions.installUntrustedExtensions = true
+app.content.emptyStageOnStart = false
+persistent.app.newStage.defaultTemplate = "test"
 "persistent"."exts"."omni.kit.welcome.window"."visible_at_startup" = false
 "persistent"."renderer"."startupMessageDisplayed" = false
-"persistent"."app"."newStage"."defaultTemplate" = "test"
 "persistent"."app"."newStage"."templatePath" =  ["${app_documents}/scripts/new_stage"]
 
 # Extension Registries

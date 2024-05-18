@@ -1,0 +1,27 @@
+[package]
+# Semantic Versionning is used: https://semver.org/
+version = "1.0.0"
+
+# The title and description fields are primarily for displaying extension info in UI
+title = "My First Extension Template"
+description = "The simplest python extension example."
+
+# URL of the extension source repository.
+repository = "https://github.com/rafalfaro18/my-kit-app"
+
+# One of categories for UI.
+category = "Example"
+
+# Keywords for the extension
+keywords = ["kit", "example"]
+
+
+# Main python module this extension provides, it will be publicly available as "import omni.hello.world".
+[[python.module]]
+name = "my_company.my_app.setup"
+
+[[test]]
+# Extra dependencies only to be used during test run
+dependencies = [
+
+]
