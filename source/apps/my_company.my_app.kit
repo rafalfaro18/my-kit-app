@@ -3,10 +3,6 @@ title = "My App"
 description = "An Application created from a tutorial."
 version = "2023.0.0"
 
-# Register extension folder from this repo in kit
-[settings.app.exts]
-folders.'++' = ["${app}/../exts", "${app}/../extscache"]
-
 [dependencies]
 "omni.app.editor.base" = {}
 "my_company.my_app.setup" = {}
@@ -19,7 +15,6 @@ folders.'++' = ["${app}/../exts", "${app}/../extscache"]
 [settings.app]
 fastShutdown = true
 newStage.defaultTemplate = "test"
-newStage.templatePath =  ["${app_documents}/scripts/new_stage"]
 
 [settings]
 persistent = true
@@ -38,6 +33,10 @@ registries = [
     { name = "kit/sdk", url = "https://ovextensionsprod.blob.core.windows.net/exts/kit/prod/sdk/${kit_version_short}/${kit_git_hash}" },
     { name = "kit/community", url = "https://dw290v42wisod.cloudfront.net/exts/kit/community" },
 ]
+
+# Register extension folder from this repo in kit
+[settings.app.exts]
+folders.'++' = ["${app}/../exts", "${app}/../extscache"]
 
 [[test]]
 args = [
