@@ -4,12 +4,12 @@ description = "An Application created from a tutorial."
 version = "2023.0.0"
 
 [dependencies]
-"omni.kit.uiapp" = {}
-"omni.kit.window.extensions" = {}
+"omni.app.editor.base" = {}
 
 [settings]
 app.window.title = "My Company App"
 app.extensions.installUntrustedExtensions = true
+"persistent"."exts"."omni.kit.welcome.window"."visible_at_startup" = false
 
 # Extension Registries
 [settings.exts."omni.kit.registry.nucleus"]
