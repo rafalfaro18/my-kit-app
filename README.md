@@ -32,19 +32,21 @@ class TestStage():
 	def __del__(self):
 		omni.kit.stage_templates.unregister_template("test")
 
+	import omni.kit.commands
+	from pxr import Usd, Sdf
+
+
 	def new_stage(self, rootname):
-		import omni.kit.commands
-		from pxr import Usd, UsdLux
-		# Create basic DistantLight
-		omni.kit.commands.execute(
-			"CreatePrim",
-			prim_path="{}/defaultLight".format(rootname),
-			prim_type="DistantLight",
-			select_new_prim=False,
-			# https://github.com/PixarAnimationStudios/USD/commit/b5d3809c943950cd3ff6be0467858a3297df0bb7
-			attributes={UsdLux.Tokens.inputsAngle: 1.0, UsdLux.Tokens.inputsIntensity: 3000} if hasattr(UsdLux.Tokens, 'inputsIntensity') else {
-				UsdLux.Tokens.angle: 1.0, UsdLux.Tokens.intensity: 3000},
-		)
+		#############
+		# Full Usage
+		#############
+		from pxr import UsdGeom
+		import omni.usd
+
+		# Create new USD stage for this sample in OV
+		context: omni.usd.UsdContext = omni.usd.get_context()
+		success: bool = context.open_stage("C:/Users/Pc/Documents/Omniverse/DefaultStage.usd")
+
 
 TestStage()
 ```
