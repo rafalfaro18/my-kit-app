@@ -20,33 +20,3 @@ You should have now launched your simple kit-based application!
 
 ## Contributing
 The source code for this repository is provided as-is and we are not accepting outside contributions.
-
-## Test template
-Defines a new Test template but it tries to load it from ``C:\Users\NAME\Documents\Kit\apps\my_company.my_app\scripts\new_stage\__init__.py`` so currently you have to manually create that file and add this content:
-```python
-class TestStage():
-
-	def __init__(self):
-		omni.kit.stage_templates.register_template("test", self.new_stage, 1)
-
-	def __del__(self):
-		omni.kit.stage_templates.unregister_template("test")
-
-	import omni.kit.commands
-	from pxr import Usd, Sdf
-
-
-	def new_stage(self, rootname):
-		#############
-		# Full Usage
-		#############
-		from pxr import UsdGeom
-		import omni.usd
-
-		# Create new USD stage for this sample in OV
-		context: omni.usd.UsdContext = omni.usd.get_context()
-		success: bool = context.open_stage("C:/Users/NAME/Documents/Omniverse/DefaultStage.usd")
-
-
-TestStage()
-```
