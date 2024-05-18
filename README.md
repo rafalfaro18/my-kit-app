@@ -20,3 +20,31 @@ You should have now launched your simple kit-based application!
 
 ## Contributing
 The source code for this repository is provided as-is and we are not accepting outside contributions.
+
+## Test template
+Defines a new Test template but it tries to load it from ``C:\Users\NAME\Documents\Kit\apps\my_company.my_app\scripts\new_stage\__init__.py`` so currently you have to manually create that file and add this content:
+```python
+class TestStage():
+
+	def __init__(self):
+		omni.kit.stage_templates.register_template("test", self.new_stage, 1)
+
+	def __del__(self):
+		omni.kit.stage_templates.unregister_template("test")
+
+	def new_stage(self, rootname):
+		import omni.kit.commands
+		from pxr import Usd, UsdLux
+		# Create basic DistantLight
+		omni.kit.commands.execute(
+			"CreatePrim",
+			prim_path="{}/defaultLight".format(rootname),
+			prim_type="DistantLight",
+			select_new_prim=False,
+			# https://github.com/PixarAnimationStudios/USD/commit/b5d3809c943950cd3ff6be0467858a3297df0bb7
+			attributes={UsdLux.Tokens.inputsAngle: 1.0, UsdLux.Tokens.inputsIntensity: 3000} if hasattr(UsdLux.Tokens, 'inputsIntensity') else {
+				UsdLux.Tokens.angle: 1.0, UsdLux.Tokens.intensity: 3000},
+		)
+
+TestStage()
+```
