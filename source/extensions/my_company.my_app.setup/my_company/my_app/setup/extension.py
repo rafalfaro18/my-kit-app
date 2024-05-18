@@ -6,25 +6,28 @@ import omni.kit.stage_templates as stage_templates
 
 class TestStage():
 
-	def __init__(self):
-		omni.kit.stage_templates.register_template("test", self.new_stage, 0)
+    def __init__(self):
+        omni.kit.stage_templates.register_template("test", self.new_stage, 0)
 
-	def __del__(self):
-		omni.kit.stage_templates.unregister_template("test")
+    def __del__(self):
+        omni.kit.stage_templates.unregister_template("test")
 
-	from pxr import Usd, Sdf
+    from pxr import Usd, Sdf
 
 
-	def new_stage(self, rootname):
-		import omni.kit.commands
-		omni.kit.commands.execute(
+    def new_stage(self, rootname):
+        import omni.kit.commands
+
+        manager = omni.kit.app.get_app().get_extension_manager()
+
+        omni.kit.commands.execute(
             "CreatePrim",
             prim_path="/World",
             prim_type="Xform",
             select_new_prim=False,
         )
-		refSphere = omni.usd.get_context().get_stage().OverridePrim("/World/newRef")
-		refSphere.GetReferences().AddReference("C:/Users/Pc/Documents/Omniverse/DefaultStage.usd")
+        refSphere = omni.usd.get_context().get_stage().OverridePrim("/World/newRef")
+        refSphere.GetReferences().AddReference(manager.get_extension_path_by_module("my_company.my_app.setup")+"/data/DefaultStage.usd")
 
 class CreateSetupExtension(omni.ext.IExt):
     """Create Final Configuration"""
