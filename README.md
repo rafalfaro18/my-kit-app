@@ -45,7 +45,7 @@ class TestStage():
 
 		# Create new USD stage for this sample in OV
 		context: omni.usd.UsdContext = omni.usd.get_context()
-		success: bool = context.open_stage("C:/Users/Pc/Documents/Omniverse/DefaultStage.usd")
+		success: bool = context.open_stage("C:/Users/NAME/Documents/Omniverse/DefaultStage.usd")
 
 
 TestStage()
