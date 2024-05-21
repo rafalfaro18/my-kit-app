@@ -4,6 +4,7 @@ import carb.settings
 import omni.kit.app
 import omni.kit.stage_templates as stage_templates
 from omni.kit.viewport.menubar.core import get_instance as get_mb_inst, DEFAULT_MENUBAR_NAME
+from omni.kit.viewport.menubar.core.viewport_menu_model import ViewportMenuModel
 from omni.kit.viewport.utility import get_active_viewport, get_active_viewport_window, disable_selection
 
 class TestStage():
@@ -42,6 +43,8 @@ class CreateSetupExtension(omni.ext.IExt):
         self._set_viewport_fill_on()
 
         self._set_viewport_menubar_visibility(False)
+
+        disable_selection(get_active_viewport())
 
         # Setting to hack few things in test run. Ideally we shouldn't need it.
         test_mode = self._settings.get("/app/testMode")
