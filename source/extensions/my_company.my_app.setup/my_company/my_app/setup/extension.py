@@ -3,6 +3,8 @@ import omni.ext
 import carb.settings
 import omni.kit.app
 import omni.kit.stage_templates as stage_templates
+from omni.kit.viewport.menubar.core import get_instance as get_mb_inst, DEFAULT_MENUBAR_NAME
+from omni.kit.viewport.utility import get_active_viewport, get_active_viewport_window, disable_selection
 
 class TestStage():
 
@@ -37,6 +39,10 @@ class CreateSetupExtension(omni.ext.IExt):
         TestStage()
         self._settings = carb.settings.get_settings()
 
+        self._set_viewport_fill_on()
+
+        self._set_viewport_menubar_visibility(False)
+
         # Setting to hack few things in test run. Ideally we shouldn't need it.
         test_mode = self._settings.get("/app/testMode")
 
@@ -55,3 +61,17 @@ class CreateSetupExtension(omni.ext.IExt):
 
     def on_shutdown(self):
         print("[my_company.my_app.setup] MyExtension shutdown")
+
+    def _set_viewport_menubar_visibility(self, show: bool) -> None:
+        mb_inst = get_mb_inst()
+        if mb_inst and hasattr(mb_inst, "get_menubar"):
+            main_menubar = mb_inst.get_menubar(DEFAULT_MENUBAR_NAME)
+            if main_menubar.visible_model.as_bool != show:
+                main_menubar.visible_model.set_value(show)
+        ViewportMenuModel()._item_changed(None)  # type: ignore
+
+    def _set_viewport_fill_on(self) -> None:
+        vp_window = get_active_viewport_window()
+        vp_widget = vp_window.viewport_widget if vp_window else None
+        if vp_widget:
+            vp_widget.expand_viewport = True
