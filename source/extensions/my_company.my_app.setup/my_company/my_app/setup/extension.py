@@ -1,8 +1,6 @@
 import asyncio
 import omni.ext
-import carb.settings
 import omni.kit.app
-import omni.kit.commands
 
 from pxr import Usd, Sdf
 
