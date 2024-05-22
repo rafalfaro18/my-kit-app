@@ -11,6 +11,7 @@ class CreateSetupExtension(omni.ext.IExt):
         """setup the window layout, menu, final configuration of the extensions etc"""
         print("[my_company.my_app.setup] MyExtension startup")
         import omni.usd
+        import omni.ui
         import carb
         import carb.settings
 
@@ -35,6 +36,13 @@ class CreateSetupExtension(omni.ext.IExt):
             carb.log_warn(f"Stage opened from {usd_file_path}")
 
         asyncio.ensure_future(_open_usd(usd_file_path))
+
+        windows = omni.ui.Workspace.get_windows()
+        for window in windows:
+            if str(window) =="Viewport":
+                omni.ui.Workspace.show_window(str(window), True)
+            else:
+                omni.ui.Workspace.show_window(str(window), False)
 
     def on_shutdown(self):
         print("[my_company.my_app.setup] MyExtension shutdown")
