@@ -12,6 +12,7 @@ class CreateSetupExtension(omni.ext.IExt):
         print("[my_company.my_app.setup] MyExtension startup")
         import omni.usd
         import omni.ui
+        import omni.timeline
         import carb
         import carb.settings
 
@@ -34,6 +35,9 @@ class CreateSetupExtension(omni.ext.IExt):
         async def _open_usd(usd_file_path):
             await omni.usd.get_context().open_stage_async(usd_file_path)
             carb.log_warn(f"Stage opened from {usd_file_path}")
+            timeline = omni.timeline.get_timeline_interface()
+
+            timeline.play()
 
         asyncio.ensure_future(_open_usd(usd_file_path))
 
