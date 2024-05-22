@@ -28,7 +28,7 @@ class CreateSetupExtension(omni.ext.IExt):
         self._menu_setup = MenuSetup()
 
         manager = omni.kit.app.get_app().get_extension_manager()
-        usd_file_path = manager.get_extension_path_by_module("my_company.my_app.setup")+"/data/DefaultStage.usd"
+        usd_file_path = manager.get_extension_path_by_module("my_company.my_app.setup")+"/data/DefaultStage.usda"
 
         async def _open_usd(usd_file_path):
             await omni.usd.get_context().open_stage_async(usd_file_path)
