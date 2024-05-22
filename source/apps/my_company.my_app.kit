@@ -14,6 +14,17 @@ version = "2023.0.0"
 app.content.emptyStageOnStart = true
 app.window.title = "Kit Custom"
 renderer.enabled='rtx'
+exts."omni.kit.tool.navigation".showSelect = false
+# Donot show context menu
+exts."omni.kit.window.viewport".showContextMenu = false
+app.runLoops.rendering_0.fillResolution = false
+exts."omni.kit.window.viewport".blockingGetViewportDrawable = false
+app.renderer.resolution.width = 1920
+app.renderer.resolution.height = 1080
+app.viewport.showSettingMenu = false
+app.viewport.showCameraMenu = false
+app.viewport.showRendererMenu = false
+app.viewport.showHideMenu = false
 
 # Extension Registries
 [settings.exts."omni.kit.registry.nucleus"]

@@ -3,6 +3,7 @@ import omni.ext
 import omni.kit.app
 
 from pxr import Usd, Sdf
+from .menu_setup import MenuSetup
 
 class CreateSetupExtension(omni.ext.IExt):
     """Create Final Configuration"""
@@ -11,6 +12,20 @@ class CreateSetupExtension(omni.ext.IExt):
         print("[my_company.my_app.setup] MyExtension startup")
         import omni.usd
         import carb
+        import carb.settings
+
+        self._settings = carb.settings.get_settings()
+
+        # this is a work around as some Extensions don't properly setup their default setting in time
+        # self._set_defaults()
+
+        # adjust couple of viewport settings
+        # self._settings.set("/app/viewport/grid/enabled", False)
+        # self._settings.set("/app/viewport/outline/enabled", False)
+        # self._settings.set("/app/viewport/boundingBoxes/enabled", False)
+        # self._settings.set("/persistent/app/viewport/displayOptions", 1)
+
+        self._menu_setup = MenuSetup()
 
         manager = omni.kit.app.get_app().get_extension_manager()
         usd_file_path = manager.get_extension_path_by_module("my_company.my_app.setup")+"/data/DefaultStage.usd"
