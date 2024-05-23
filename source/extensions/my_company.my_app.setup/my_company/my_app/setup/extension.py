@@ -22,10 +22,10 @@ class CreateSetupExtension(omni.ext.IExt):
         # self._set_defaults()
 
         # adjust couple of viewport settings
-        # self._settings.set("/app/viewport/grid/enabled", False)
-        # self._settings.set("/app/viewport/outline/enabled", False)
-        # self._settings.set("/app/viewport/boundingBoxes/enabled", False)
-        # self._settings.set("/persistent/app/viewport/displayOptions", 1)
+        self._settings.set("/app/viewport/grid/enabled", False)
+        self._settings.set("/app/viewport/outline/enabled", False)
+        self._settings.set("/app/viewport/boundingBoxes/enabled", False)
+        self._settings.set("/persistent/app/viewport/displayOptions", 0)
 
         self._menu_setup = MenuSetup()
 
