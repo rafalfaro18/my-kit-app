@@ -20,3 +20,7 @@ You should have now launched your simple kit-based application!
 
 ## Contributing
 The source code for this repository is provided as-is and we are not accepting outside contributions.
+
+## Known Issues
+- **Issue**: ``.\repo package`` fails with error ``Path does not exist``.
+- **Solution**: Clone this repository in ``C:\`` so paths are shorter. Windows is known to have a lenght limit for paths. Also run ``.\build`` and ``.\repo package`` in CMD instead of PowerShell (if using Visual Studio Code create a new terminal of type ``Command Prompt``)
