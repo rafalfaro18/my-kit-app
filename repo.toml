@@ -23,6 +23,7 @@ name = "kit-app-template"
 apps = [
     "${root}/source/apps/omni.usd_explorer.kit",
     "${root}/source/apps/my_name.my_app.kit",
+    "${root}/source/apps/my_company.my_app.kit",
 ]
 
 registries = [
