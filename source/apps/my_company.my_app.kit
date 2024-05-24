@@ -10,6 +10,17 @@ version = "2023.0.0"
 "omni.graph.bundle.action" = {}
 # Order 10000 means Load it last
 "my_company.my_app.setup" = { order = 10000 }
+"omni.rtx.shadercache.vulkan" = {}
+
+# Windows only extensions. For all of them set exact=true to not be included into generated version lock.
+# That will break linux otherwise, as version lock is platform agnostic currently.
+[settings.app.extensions."filter:platform"."linux-x86_64"]
+excluded = [
+	"omni.rtx.shadercache.d3d12",
+]
+
+[dependencies."filter:platform"."windows-x86_64"]
+"omni.rtx.shadercache.d3d12" = {}
 
 [settings]
 persistent = true
