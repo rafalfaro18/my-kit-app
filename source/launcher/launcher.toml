@@ -1,11 +1,11 @@
 ## install and launch instructions by environment
 [defaults.windows-x86_64]
 url = ""
-entrypoint = "${productRoot}/omni.usd_explorer.bat"
+entrypoint = "${productRoot}/my_company.my_app.bat"
 args = ["--/app/environment/name='launcher'"]
 
 [defaults.windows-x86_64.open]
-command = "${productRoot}/omni.usd_explorer.bat"
+command = "${productRoot}/my_company.my_app.bat"
 args = ['--exec "open_stage.py ${file}"', "--/app/environment/name='launcher'"]
 
 [defaults.windows-x86_64.environment]
@@ -15,7 +15,7 @@ pre-install = ""
 pre-install-args = []
 install = "${productRoot}/pull_kit_sdk.bat"
 install-args = []
-post-install = "" # "${productRoot}/omni.usd_explorer.warmup.bat"
+post-install = "" # "${productRoot}/my_company.my_app.warmup.bat"
 post-install-args = ["--/app/environment/name='launcher_warmup'"]
 
 [defaults.windows-x86_64.uninstall]
@@ -28,7 +28,7 @@ post-uninstall-args = []
 
 [defaults.linux-x86_64]
 url = ""
-entrypoint = "${productRoot}/omni.usd_explorer.sh"
+entrypoint = "${productRoot}/my_company.my_app.sh"
 args = ["--/app/environment/name='launcher'"]
 [defaults.linux-x86_64.environment]
 
@@ -37,7 +37,7 @@ pre-install = ""
 pre-install-args = []
 install = "${productRoot}/pull_kit_sdk.sh"
 install-args = []
-post-install = "" # "${productRoot}/omni.usd_explorer.warmup.sh"
+post-install = "" # "${productRoot}/my_company.my_app.warmup.sh"
 post-install-args = ["--/app/environment/name='launcher_warmup'"]
 
 [defaults.linux-x86_64.uninstall]
